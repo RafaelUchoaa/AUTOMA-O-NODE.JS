@@ -16,7 +16,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - Node.js
 - Selenium-webdriver
-- Nodes-xlsx
+- Node-xlsx
 - Git e Github
 
 ## 💻 Projeto
