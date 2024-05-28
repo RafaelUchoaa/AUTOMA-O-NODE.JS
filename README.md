@@ -29,4 +29,4 @@ Este projeto de automação Node.js consiste em duas principais funcionalidades:
 
 ## 🎯 Objetivo<br>
 
-Demonstrar como automatizar tarefas básicas de inserção e extração de dados em Node.js. Este projeto mostra como coletar dados de uma fonte web, organizá-los em um arquivo Excel e usá-los para preencher formulários online. Esse método básico de automação pode ser expandido para integrações mais complexas entre vários sistemas e plataformas.
+Demonstrar como automatizar tarefas básicas de como inserir e extrair dados em Node.js. Este projeto mostra como coletar dados de uma fonte web, organizá-los em um arquivo Excel e usá-los para preencher formulários online.
