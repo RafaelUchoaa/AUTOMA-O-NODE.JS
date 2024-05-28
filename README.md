@@ -23,7 +23,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Este projeto de automação Node.js consiste em duas principais funcionalidades:
 
-1. Automatiza a extração de dados de uma tabela web por meio do URL da Tabela de Dados e a salvação dos dados em um arquivo Excel.<br>
+1. Automatizar a extração de dados de uma tabela web por meio do URL da Tabela de Dados e salvar os dados em um arquivo Excel.<br>
 2. Ler o arquivo Excel criado e usar os dados para preencher um formulário online usando o URL do Formulário de Edição. Os dados serão formatados com traços no inicio, espaços, ponto e vírgula e a quebra de linha.<br>
 <br>
 
