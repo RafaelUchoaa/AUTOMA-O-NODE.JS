@@ -6,14 +6,14 @@ const path = require('path');
 
 async function scrapeTable() {
     let options = new chrome.Options();
-    options.addArguments('--ignore-certificate-errors');
+    options.addArguments('--ignore-certificate-errors'); // esse código ignora os erros de certificados de bloqueio.
 
     let driver = await new Builder()
         .forBrowser('chrome')
         .setChromeOptions(options)
         .build();
     try {
-        await driver.get('http://webapplayers.com/inspinia_admin-v2.9.4/table_data_tables.html');
+        await driver.get('http://webapplayers.com/inspinia_admin-v2.9.4/table_data_tables.html'); // faz a navegação para a página.
 
         let data = [];
 
@@ -24,8 +24,8 @@ async function scrapeTable() {
 
         // Iterar sobre todas as páginas
         for (let i = 0; i < totalPages; i++) {
-            let table = await driver.findElement(By.id('DataTables_Table_0'));
-            let rows = await table.findElements(By.css('tbody tr'));
+            let table = await driver.findElement(By.id('DataTables_Table_0')); //localiza o elemento HTML da tabela na página.
+            let rows = await table.findElements(By.css('tbody tr')); // localiza todas as linhas da página.
 
             for (let row of rows) {
                 let cells = await row.findElements(By.css('td'));
@@ -41,7 +41,7 @@ async function scrapeTable() {
             if (i < totalPages - 1) {
                 let nextButton = await pagination.findElement(By.linkText('Next'));
                 await nextButton.click();
-                await driver.sleep(2000); // Esperar um tempo para a página carregar completamente
+                await driver.sleep(2000); // Aguarda um tempo até que a pagina carregue por completo.
             }
         }
 
@@ -54,7 +54,7 @@ async function scrapeTable() {
 }
 
 async function fillForm() {
-    // Lê os dados do arquivo Excel
+    // faz a leitura dos dados em arquivo excel.
     let data;
     try {
         data = xlsx.parse(fs.readFileSync('table_data.xlsx'))[0].data;
@@ -64,7 +64,7 @@ async function fillForm() {
     }
 
     let options = new chrome.Options();
-    options.addArguments('--ignore-certificate-errors');
+    options.addArguments('--ignore-certificate-errors');// esse código ignora os erros de certificados de bloqueio.
 
     let driver = await new Builder()
         .forBrowser('chrome')
@@ -73,12 +73,13 @@ async function fillForm() {
     try {
         await driver.get('http://webapplayers.com/inspinia_admin-v2.9.4/form_editors.html');
         console.log('Página carregada.');
-
+        
+        // faz a localização da div fornecida da página.
         let editableDiv = await driver.wait(until.elementLocated(By.xpath('//*[@id="page-wrapper"]/div[3]/div[1]/div/div/div[2]/div[2]/div[3]/div[2]')), 20000);
         await driver.wait(until.elementIsVisible(editableDiv), 20000);
         console.log('Div editável localizada.');
 
-        let text = data.map(row => `- ${row.join(', ')};<br>`).join('');
+        let text = data.map(row => `- ${row.join(', ')};<br>`).join(''); //faz a inclusão do traço no começo, espaço entre as palavras, ponto e vírgula no fim quebra de linha.
         console.log('Texto preparado:', text);
 
         await driver.executeScript('arguments[0].innerHTML = arguments[1];', editableDiv, text);
@@ -92,7 +93,7 @@ async function fillForm() {
         let screenshotPath = path.join(__dirname, 'filled_form.png');
         let screenshot = await driver.takeScreenshot();
         fs.writeFileSync(screenshotPath, screenshot, 'base64');
-        console.log(`Captura de tela salva em ${screenshotPath}`);
+        console.log(`Captura de tela salva em ${screenshotPath}`); // faz uma captura de tela e salva em arquivo para verificar se a edição foi feita correta.
     } catch (error) {
         console.error('Erro:', error);
     } finally {
