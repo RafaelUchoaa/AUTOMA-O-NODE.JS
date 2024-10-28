@@ -27,13 +27,7 @@ Este projeto de automação Node.js consiste em duas principais funcionalidades:
 2. Ler o arquivo Excel criado e usar os dados para preencher um formulário online usando o URL do Formulário de Edição. Os dados serão formatados com traços no inicio, espaços, ponto e vírgula e a quebra de linha.<br>
 <br>
 
-## Telas do App <br>
-- Tela de Login: Tela simples para login, onde o usuário deve inserir e-mail e senha para acessar a lista de posts. Para testes, utilize:<br>
-  E-mail: test@gmail.com<br>
-  Senha: 123456<br>
-- Tela de Lista de Posts: Exibe todos os posts de forma organizada.<br>
-- Tela de Detalhes do Post: Exibe o conteúdo completo do post e seus comentários.<br>
-<br>
+
 ## 🎯 Objetivo<br>
 
 Demonstrar como automatizar tarefas básicas de como inserir e extrair dados em Node.js. Este projeto mostra como coletar dados de uma fonte web, organizá-los em um arquivo Excel e usá-los para preencher formulários online.
